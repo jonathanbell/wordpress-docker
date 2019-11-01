@@ -1,0 +1,31 @@
+version: '3.5'
+services:
+    wordpress-db:
+        image: mysql:5.7
+        container_name: wordpress-db
+        restart: unless-stopped
+        volumes:
+            - ./docker/run/var:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=wordpress
+            - MYSQL_DATABASE=wordpress-db:3306
+            - MYSQL_USER=wordpress
+            - MYSQL_PASSWORD=wordpress
+        ports:
+            - 3307:3306
+
+    wordpress:
+        depends_on:
+            - wordpress-db
+        build:
+            context: '.'
+            args:
+                uid: 1000
+        container_name: wordpress
+        volumes:
+            - .:/var/www/html
+        environment:
+            - APACHE_RUN_USER=#1000
+            - APACHE_RUN_GROUP=#1000
+        ports:
+            - 443:443
