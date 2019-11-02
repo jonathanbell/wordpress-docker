@@ -41,8 +41,6 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"; \
     echo "xdebug.remote_connect_back=0" >> "$PHP_INI_DIR/php.ini"; \
     echo "xdebug.remote_host=host.docker.internal" >> "$PHP_INI_DIR/php.ini"
 
-#zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20170718/xdebug.so
-
 # Install PHP extensions needed for Wordpress
 RUN docker-php-ext-install \
     bz2 \
@@ -58,6 +56,8 @@ RUN docker-php-ext-install \
 
 # Install Composer from base image
 #COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN mkdir -p /data/application
 
 # Install and configure Xdebug
 RUN pecl install xdebug; \

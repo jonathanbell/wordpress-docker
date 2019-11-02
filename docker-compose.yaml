@@ -4,11 +4,14 @@ services:
         image: mysql:5.7
         container_name: wordpress-db
         restart: unless-stopped
+        command: --init-file /data/application/init.sql
         volumes:
             - ./docker/run/var:/var/lib/mysql
+            - ./docker/init.sql:/data/application/init.sql
         environment:
+            - MYSQL_ROOT_USER=root
             - MYSQL_ROOT_PASSWORD=wordpress
-            - MYSQL_DATABASE=wordpress-db:3306
+            - MYSQL_DATABASE=wordpress-db
             - MYSQL_USER=wordpress
             - MYSQL_PASSWORD=wordpress
         ports:

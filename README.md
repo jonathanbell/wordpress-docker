@@ -13,10 +13,10 @@ This is an example of Wordpress running on Docker (for local development).
 1. `docker-compose up`
 1. Open <https://localhost>
 1. Create a new Wordpress using these credentials:
-    - Host: wordpress-db
-    - User: wordpress
+    - Database Name: wordpress
+    - User: root
     - Password: wordpress
-    - Database: wordpress
+    - Host: wordpress-db
 
 ## Connecting to the database from the host
 
