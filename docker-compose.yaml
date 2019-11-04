@@ -27,6 +27,7 @@ services:
         container_name: wordpress
         volumes:
             - .:/var/www/html
+            - ./docker/wp-uploads:/var/www/html/wp-content/uploads
         environment:
             - APACHE_RUN_USER=#1000
             - APACHE_RUN_GROUP=#1000
