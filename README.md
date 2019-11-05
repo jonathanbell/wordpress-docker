@@ -66,4 +66,6 @@ UPDATE `wp_users` SET `user_pass` = MD5( 'new_password' ) WHERE `wp_users`.`user
 
 ## Logs
 
-TODO: Get server logs and xdebug logs logging out to `./docker/logs`
+Logs such as Apache error logs can be found at: `./docker/logs`
+
+TODO: Add the MySQL logs here too! 
