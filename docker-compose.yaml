@@ -8,6 +8,7 @@ services:
         volumes:
             - ./docker/run/var:/var/lib/mysql
             - ./docker/init.sql:/data/application/init.sql
+            - ./docker/database-import:/home
         environment:
             - MYSQL_ROOT_USER=root
             - MYSQL_ROOT_PASSWORD=wordpress
@@ -28,6 +29,7 @@ services:
         volumes:
             - .:/var/www/html
             - ./docker/wp-uploads:/var/www/html/wp-content/uploads
+            - ./docker/logs:/tmp
         environment:
             - APACHE_RUN_USER=#1000
             - APACHE_RUN_GROUP=#1000

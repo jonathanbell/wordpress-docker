@@ -1,0 +1,5 @@
+*
+!.gitignore
+!index.php
+!hello.php
+!akismet/

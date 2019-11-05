@@ -23,6 +23,8 @@ RUN apt-get install -yq \
 
 # Apache config: DocumentRoot / SSL
 RUN sed -ri -e 's!/var/www!/var/www/html!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+RUN sed -ri -e 's!/tmp/!${APACHE_LOG_DIR}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/tmp/!${APACHE_LOG_DIR}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # mod_rewrite, mod_headers and SSL enable
 COPY ./docker/certs/server.crt /etc/apache2/ssl/server.crt
@@ -49,7 +51,6 @@ RUN docker-php-ext-install \
     bcmath \
     opcache \
     calendar \
-    mbstring \
     mysqli \
     pdo_mysql \
     zip
