@@ -39,7 +39,7 @@ Web server: `docker exec -u 0 -it wordpress bash`
 
 ## Importing a production database for use on the local Docker container
 
-1. It's probably easiest to turn off all
+1. It's probably best to [turn off all plugins](https://www.siteground.com/kb/how_to_disable_all_wordpress_plugins_directly_from_database/) and themes before dumping the DB
 1. Dump the database on your server: `mysqldump -u root -p<root_password> <database_name> > <dumpfilename.sql>`
 1. Download the dump file to `./docker/database-import/`
 1. Import the dumpfile:
