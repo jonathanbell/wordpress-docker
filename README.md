@@ -16,10 +16,10 @@ Shiny things:
 1. `docker-compose up`
 1. Open <https://localhost>
 1. Create a new Wordpress using these credentials:
-    - Database Name: wordpress
-    - User: root
-    - Password: wordpress
-    - Host: wordpress-db
+    - Database Name: `wordpress`
+    - User: `root`
+    - Password: `wordpress`
+    - Host: `wordpress-db`
 
 ## Connecting to the development database from the host
 
@@ -54,8 +54,15 @@ Web server: `docker exec -u 0 -it wordpress bash`
     1. `UPDATE wp_posts SET post_content = replace(post_content, '<olddomain.com>', 'localhost');`
     1. `UPDATE wp_postmeta SET meta_value = replace(meta_value, '<olddomain.com>', 'localhost');`
     1. `UPDATE wp_posts SET post_excerpt = replace(post_excerpt, '<olddomain.com>', 'localhost');`
+    1. `quit`
 
 Keep in mind that the above will only update the domain. Other settings like theme and images will need to be handled differently/separately.
+
+You may need to reset the admin password to your site. You can do that via:
+
+```SQL
+UPDATE `wp_users` SET `user_pass` = MD5( 'new_password' ) WHERE `wp_users`.`user_login` = "admin_username";
+```
 
 ## Logs
 

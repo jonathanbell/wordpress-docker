@@ -10,3 +10,7 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
+
+# https://wordpress.org/support/topic/how-do-i-change-wordpress-media-uploads-url-to-my-cloudfront-cdn-url/
+#RewriteEngine on
+#RedirectMatch 302 ^/wp-content/uploads(.*) https://<mysite.com>/wp-content/uploads$1

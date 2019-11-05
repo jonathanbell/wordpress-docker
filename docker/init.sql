@@ -1,2 +1,2 @@
 CREATE DATABASE IF NOT EXISTS wordpress;
-GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost';
+-- GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost';
