@@ -1,7 +1,11 @@
 
 # BEGIN WordPress
+# The directives (lines) between `BEGIN WordPress` and `END WordPress` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
 <IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -12,5 +16,7 @@ RewriteRule . /index.php [L]
 # END WordPress
 
 # https://wordpress.org/support/topic/how-do-i-change-wordpress-media-uploads-url-to-my-cloudfront-cdn-url/
-#RewriteEngine on
-#RedirectMatch 302 ^/wp-content/uploads(.*) https://<mysite.com>/wp-content/uploads$1
+<IfModule mod_rewrite.c>
+  #RewriteEngine On
+  #RedirectMatch 302 ^/wp-content/uploads(.*) https://<mysite.com>/wp-content/uploads$1
+</IfModule>
