@@ -41,7 +41,11 @@ Database: `docker exec -u 0 -it wordpress-db bash`
 
 ## Importing a production database for use on the local Docker container
 
-1. It's probably best to [turn off all
+Use a tool like [WP Migrate DB
+Pro](https://deliciousbrains.com/wp-migrate-db-pro/) (**recommended**), or
+follow these steps below to dump and import your database locally:
+
+1. [Turn off all
    plugins](https://www.siteground.com/kb/how_to_disable_all_wordpress_plugins_directly_from_database/)
    and themes before creating your SQL dump file
 1. Dump the database on your server: `mysqldump -u root -p<root_password>
